@@ -1,12 +1,16 @@
-
+// Definición de una clase llamada wcPaginator que extiende de HTMLElement
 class wcPaginator extends HTMLElement {
   constructor() {
     super();
+    // Crea un Shadow DOM adjunto al elemento, con el modo 'open' para permitir el acceso desde fuera
     this.attachShadow({ mode: 'open' });
   }
+
+  // Método estático que retorna una lista de atributos observados para cambios
   static get observedAttributes() {
-    return [' title', ' class', 'describe'];
+    return ['title', 'class', 'describe'];
   }
+   // Método que se llama cuando uno de los atributos observados cambiado
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'title') {
       this.title = newValue;
@@ -59,4 +63,5 @@ class wcPaginator extends HTMLElement {
     this.render();
   }
 }
+// Define un nuevo elemento personalizado llamado 'wc-paginator' asociado a la clase wcPaginator
 customElements.define('wc-paginator', wcPaginator);
