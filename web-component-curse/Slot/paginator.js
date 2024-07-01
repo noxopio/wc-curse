@@ -8,16 +8,23 @@ class wcPaginator extends HTMLElement {
   getTemplate() {
     const template = document.createElement('template');
     template.innerHTML = `
-<div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
+<section>
+
+<h2>
+<slot
+ name="title">
+</slot>
+</h2>
+<div>
+<h1>
+<slot name= "parrafo"></slot>
+</h1>
 </div>
+<h3>
+<slot name ="pa"></slot>
+</h3>
+</section>
+
 ${this.getStyle()}
 `;
     return template;
@@ -26,6 +33,15 @@ ${this.getStyle()}
   getStyle() {
     return `
 <style>
+h2{
+color: red ;
+font-size:16px; 
+}
+p{
+
+backgroudn:black;
+color:white;
+}
 .pagination {
   display: inline-block;
 }
