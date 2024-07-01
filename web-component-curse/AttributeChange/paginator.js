@@ -21,24 +21,18 @@ class wcPaginator extends HTMLElement {
   getTemplate() {
     const template = document.createElement('template');
     template.innerHTML = `
-<section>
-
-<h1>
-${this.title}
-</h1>
-
-<div>
-
-<h2>
-${this.describe}
-</h2>
-
-</div>
-
-</section>
-${this.getStyle()}
+      <section>
+        <h1>
+          ${this.title}
+        </h1>
+        <div>
+        <h2>
+          ${this.describe}
+        </h2>
+        </div>
+      </section>
+          ${this.getStyle()}
 `;
-
     return template;
   }
   getStyle() {
@@ -61,8 +55,7 @@ ${this.getStyle()}
     // this.appendChild(this.getTemplate().content.cloneNode(true));
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));//una vez que se agrega el shadowDom se debe agregar el shadowRoot
   }
-  connectedCallback()
-   {
+  connectedCallback() {
     this.render();
   }
 }
