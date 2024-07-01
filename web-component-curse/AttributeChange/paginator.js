@@ -7,19 +7,19 @@ class wcPaginator extends HTMLElement {
   }
 
   static get observedAttributes() {
-return [' title',' class', 'describe'];
+    return [' title', ' class', 'describe'];
   }
-attributeChangedCallback(name, oldValue, newValue) {
-if(name==='title'){
-  this.title=newValue;
-}
-if(name==='class'){
-  this.class=newValue;
-}
-if(name==='describe'){
-  this.describe=newValue;
-}
-}
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'title') {
+      this.title = newValue;
+    }
+    if (name === 'class') {
+      this.class = newValue;
+    }
+    if (name === 'describe') {
+      this.describe = newValue;
+    }
+  }
   getTemplate() {
     const template = document.createElement('template');
     template.innerHTML = `
@@ -40,7 +40,17 @@ ${this.getStyle()}
   getStyle() {
     return `
 <style>
+:host
+{
+  margin:8px;
+display:inline-block;
+color:red;
+width:100%;
+min-width:300px;
+max-width:400px;
 
+background-color:black;
+}
 </style>
 `;
   }
