@@ -3,11 +3,23 @@ class wcPaginator extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.title=this.getAttribute('title');
-    this.img=this.getAttribute('img');
-    this.describe=this.getAttribute('describe');
 
   }
+
+  static get observedAttributes() {
+return [' title',' class', 'describe'];
+  }
+attributeChangedCallback(name, oldValue, newValue) {
+if(name==='title'){
+  this.title=newValue;
+}
+if(name==='class'){
+  this.class=newValue;
+}
+if(name==='describe'){
+  this.describe=newValue;
+}
+}
   getTemplate() {
     const template = document.createElement('template');
     template.innerHTML = `
@@ -17,9 +29,6 @@ class wcPaginator extends HTMLElement {
 <div>
 <h2>${this.describe}     </h2>
 <img  src="" alt="">
-</div>
-<div>
-<h3></h3>
 </div>
 </section>
 
@@ -31,25 +40,7 @@ ${this.getStyle()}
   getStyle() {
     return `
 <style>
-h2{
-color: red ;
-font-size:16px; 
-}
-p{
 
-backgroudn:black;
-color:white;
-}
-.pagination {
-  display: inline-block;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-}
 </style>
 `;
   }
