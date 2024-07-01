@@ -10,7 +10,7 @@ class wcPaginator extends HTMLElement {
   static get observedAttributes() {
     return ['title', 'class', 'describe'];
   }
-   // Método que se llama cuando uno de los atributos observados cambiado
+  // Método que se llama cuando uno de los atributos observados cambiado
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'title') {
       this.title = newValue;
@@ -44,13 +44,39 @@ class wcPaginator extends HTMLElement {
 <style>
  :host
 {
+--primary-color:black;
+--secondary-color:red;
+--heading-primary:30px;
+--heading-secondary:25px;
   margin:8px;
   display:inline-block;
-  color:red;
+  color:var(--secondary-color);
   width:100%;
   min-width:300px;
   max-width:400px;
-  background-color:black;
+  text-align:center;
+  background-color:var(--primary-color);
+  }
+    :host(.blue){
+  color:var(--secondary-color); 
+    text-align:center;
+      background:var(--primary-color);
+      font-size:32px;
+      }
+      :host([red])
+      {
+   color:var(--secondary-color);  
+        object-fit:cover;
+        background-color:var(--primary-color);
+        color:var(--secondary-color); 
+apspect-ratio:1/2;
+border-radius :100%;
+}
+:host-context(article.card){/*selecciona el host que este dentro de un article con la clase card*/
+color:blue;
+
+border:4px solid blue;
+border-radius:8px;
 }
 </style>
 `;

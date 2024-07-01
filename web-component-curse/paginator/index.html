@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Component Paginator Example</title>
+</head>
+<body>
+
+  <!-- Aquí se incluye el web component wc-paginator -->
+  <wc-paginator title="Sample Paginator" describe="Page navigation example" current-page="1" total-pages="10"></wc-paginator>
+
+  <script module src="./main.js"></script>
+  <script>
+    // Escuchar el evento personalizado 'page-change' para reaccionar a los cambios de página
+    document.querySelector('wc-paginator').addEventListener('page-change', (event) => {
+      console.log('Current Page:', event.detail.currentPage);
+      // Aquí puedes añadir la lógica para cargar los datos de la página correspondiente
+    });
+  </script>
+
+</body>
+</html>
