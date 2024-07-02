@@ -6,24 +6,16 @@ class productCard extends HTMLElement {
     static get observedAttributes() {
       return ["img", "title", "price", "description", "collection"];
     }
-    attributeChangedCallback(attr, oldVal, newVal) {
-      if (attr === "img" && oldVal !== newVal) {
-        this.img = newVal;
-      }
-      if (attr === "title"&& oldVal !== newVal) {
-        this.title = newVal;
-      }
-      if (attr === "price"&& oldVal !== newVal) {
-        this.price = newVal;
-      }
-      if (attr === "description"&& oldVal !== newVal) {
-        this.description = newVal;
-      }
-      if (attr === "collection"&& oldVal !== newVal) {
-        this.collection = newVal;
+    static get observedAttributes() {
+        return ["img", "title", "price", "description", "collection"];
       }
       
-    }
+      attributeChangedCallback(attr, oldVal, newVal) {
+        if (oldVal !== newVal && this.constructor.observedAttributes.includes(attr)) {
+          this[attr] = newVal;
+        }
+      }
+      
     getTemplate() {
       const template = document.createElement("template");
       template.innerHTML = `
