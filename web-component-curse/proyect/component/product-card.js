@@ -6,9 +6,7 @@ class productCard extends HTMLElement {
     static get observedAttributes() {
       return ["img", "title", "price", "description", "collection"];
     }
-    static get observedAttributes() {
-        return ["img", "title", "price", "description", "collection"];
-      }
+ 
       
       attributeChangedCallback(attr, oldVal, newVal) {
         if (oldVal !== newVal && this.constructor.observedAttributes.includes(attr)) {
@@ -23,14 +21,14 @@ class productCard extends HTMLElement {
           <section class="imgBox">
             <img src="${
               this.img
-            }" alt="Zapatos deportivos para correr color azul"/>
+            }" alt="${this.title}"/>
           </section>
           <section class="details">
             <div class="content">
               <h2>${this.title} <span>${this.collection}</span></h2>
               <p>${this.description}</p>
               <h3>${this.price}</h3>
-              <button>Comprar</button>
+              <button>${this.title}</button>
             </div>
           </section>
         </main>
@@ -42,7 +40,7 @@ class productCard extends HTMLElement {
       return `
         <style>
         :host {
-          --primary-background: #5a6cb2;
+          --primary-background: #f1f1f1;
           --shadow-color:black
           --shadow-offset:8px;
             width: 80%;
@@ -78,7 +76,7 @@ class productCard extends HTMLElement {
             left: 20px;
             font-size: 8em;
             font-weight: 800;
-            color: #000;
+            color: white;
             content:" ${this.title} ";
                  text-shadow: 
         var(--shadow-offset) 0 var(--shadow-color),
@@ -90,7 +88,7 @@ class productCard extends HTMLElement {
         calc(0.5 * var(--shadow-offset)) calc(-0.5 * var(--shadow-offset)) var(--shadow-color),
         calc(-0.5 * var(--shadow-offset)) calc(0.5 * var(--shadow-offset)) var(--shadow-color);
               opacity: 0.1;
-          }
+          
             opacity: 0.1;
         }
         .container .imgBox img {
@@ -140,12 +138,13 @@ class productCard extends HTMLElement {
             float: right;
             padding: 15px 20px;
             font-size: 16px;
-            color: #fff;
+            color: blue;
             letter-spacing: 1px;
             font-weight: 600;
+            border:2px solid blue;
             text-transform: uppercase;
             border-radius: 40px;
-            background-color: #5a6cb2;
+            background-color: black;
             cursor: pointer;
         }
         @media (max-width: 1080px) {
